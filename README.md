@@ -5,7 +5,7 @@ Starter project untuk jobsheet **Incremental Static Regeneration (ISR)**.
 ## Mulai
 ```bash
 git clone <URL-REPO-INI>
-cd isr-jobsheet
+
 npm install
 cp .env.local.example .env.local     # Windows CMD: copy .env.local.example .env.local
 ```
