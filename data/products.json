@@ -1,0 +1,6 @@
+[
+  { "id": 1, "nama": "Keyboard Mekanik", "harga": 450000, "stok": 12 },
+  { "id": 2, "nama": "Mouse Wireless", "harga": 175000, "stok": 30 },
+  { "id": 3, "nama": "Headset Gaming", "harga": 320000, "stok": 8 },
+  { "id": 4, "nama": "Webcam Full HD", "harga": 280000, "stok": 5 }
+]
