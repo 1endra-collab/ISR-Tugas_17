@@ -1,0 +1,19 @@
+[1mdiff --cc app/produk/[id]/page.js[m
+[1mindex 6eab47a,1d7770e..0000000[m
+[1m--- a/app/produk/[id]/page.js[m
+[1m+++ b/app/produk/[id]/page.js[m
+[36m@@@ -1,8 -1,8 +1,14 @@@[m
+  import { notFound } from "next/navigation";[m
+  import BuildInfo from "@/components/BuildInfo";[m
+[32m++<<<<<<< HEAD[m
+[32m +// TODO (Langkah 24): import + revalidate, lihat JOBSHEET.md[m
+[32m +[m
+[32m +// TODO (Langkah 25): tulis generateStaticParams, lihat JOBSHEET.md[m
+[32m++=======[m
+[32m+ // TODO (Tahap 5, Langkah 24): lihat JOBSHEET.md[m
+[32m+ [m
+[32m+ // TODO (Tahap 5, Langkah 24): lihat JOBSHEET.md[m
+[32m++>>>>>>> 8082c87 (first commit)[m
+  [m
+  export default async function DetailProduk({ params }) {[m
+    const { id } = await params;[m
