@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getProductById } from "@/lib/products";
 import BuildInfo from "@/components/BuildInfo";
 // TODO (Langkah 24): import + revalidate, lihat JOBSHEET.md
 
