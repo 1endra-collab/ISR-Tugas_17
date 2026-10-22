@@ -2,8 +2,6 @@ import Link from "next/link";
 import BuildInfo from "@/components/BuildInfo";
 import { getProducts } from "@/lib/products";
 
-export const revalidate = 10;
-
 export default function ProdukPage() {
   const products = getProducts();
 
