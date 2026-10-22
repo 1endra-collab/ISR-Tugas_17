@@ -1,15 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import BuildInfo from "@/components/BuildInfo";
-import { getProductById, getProducts } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 
-export const revalidate = 10;
-
-export function generateStaticParams() {
-  return getProducts().map((product) => ({
-    id: String(product.id),
-  }));
-}
+// TODO (Tahap 5, Langkah 24–25): tambahkan revalidate dan generateStaticParams.
 
 export default async function DetailProduk({ params }) {
   const { id } = await params;
