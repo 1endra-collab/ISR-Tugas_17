@@ -14,8 +14,8 @@ export async function GET(request) {
     );
   }
 
-  // Praktikum ini hanya mengizinkan invalidasi halaman katalog.
-  if (!path.startsWith("/produk") || path.includes("..")) {
+  // Hanya izinkan katalog dan detail produk dengan ID numerik.
+  if (!/^\/produk(?:\/\d+)?$/.test(path)) {
     return NextResponse.json(
       { revalidated: false, message: "Path tidak diizinkan." },
       { status: 400 },
