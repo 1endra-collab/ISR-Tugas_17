@@ -1,22 +1,32 @@
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
-<<<<<<< HEAD
-// TODO (Langkah 35): lihat JOBSHEET.md
-=======
-// TODO (Tahap 6, Langkah 34): lihat JOBSHEET.md
->>>>>>> 8082c87 (first commit)
 
 export async function GET(request) {
-  const secret = request.nextUrl.searchParams.get("secret");
-  const path = request.nextUrl.searchParams.get("path") || "/produk";
+  const { searchParams } = new URL(request.url);
+  const secret = searchParams.get("secret");
+  const path = searchParams.get("path") || "/produk";
+  const expectedSecret = process.env.REVALIDATE_SECRET;
 
-<<<<<<< HEAD
-  // TODO (Langkah 35): lihat JOBSHEET.md
-=======
-  // TODO (Tahap 6, Langkah 34): lihat JOBSHEET.md
->>>>>>> 8082c87 (first commit)
-  // 1. Jika secret tidak sama dengan process.env.REVALIDATE_SECRET -> balas status 401
-  // 2. Panggil revalidatePath(path)
-  // 3. Balas JSON { revalidated: true, path }
+  if (!expectedSecret || secret !== expectedSecret) {
+    return NextResponse.json(
+      { revalidated: false, message: "Secret tidak valid." },
+      { status: 401 },
+    );
+  }
 
-  return NextResponse.json({ message: "Belum diimplementasikan" });
+  // Hanya izinkan katalog dan detail produk dengan ID numerik.
+  if (!/^\/produk(?:\/\d+)?$/.test(path)) {
+    return NextResponse.json(
+      { revalidated: false, message: "Path tidak diizinkan." },
+      { status: 400 },
+    );
+  }
+
+  revalidatePath(path);
+
+  return NextResponse.json({
+    revalidated: true,
+    path,
+    message: "Path ditandai untuk dibuat ulang saat diminta berikutnya.",
+  });
 }
