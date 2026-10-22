@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
+// TODO (Langkah 35): lihat JOBSHEET.md
 
 export async function GET(request) {
-  // TODO (Tahap 6, Langkah 35): import revalidatePath dari "next/cache".
-  // TODO: baca secret dan path dari query string.
-  // TODO: validasi secret menggunakan process.env.REVALIDATE_SECRET.
-  // TODO: panggil revalidatePath(path) jika secret benar.
+  const secret = request.nextUrl.searchParams.get("secret");
+  const path = request.nextUrl.searchParams.get("path") || "/produk";
+
+  // TODO (Langkah 35): lihat JOBSHEET.md
+  // 1. Jika secret tidak sama dengan process.env.REVALIDATE_SECRET -> balas status 401
+  // 2. Panggil revalidatePath(path)
+  // 3. Balas JSON { revalidated: true, path }
 
   return NextResponse.json({ message: "Belum diimplementasikan" });
 }
