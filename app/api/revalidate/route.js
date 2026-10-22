@@ -1,32 +1,10 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
-  const path = searchParams.get("path") || "/produk";
-  const expectedSecret = process.env.REVALIDATE_SECRET;
+  // TODO (Tahap 6, Langkah 35): import revalidatePath dari "next/cache".
+  // TODO: baca secret dan path dari query string.
+  // TODO: validasi secret menggunakan process.env.REVALIDATE_SECRET.
+  // TODO: panggil revalidatePath(path) jika secret benar.
 
-  if (!expectedSecret || secret !== expectedSecret) {
-    return NextResponse.json(
-      { revalidated: false, message: "Secret tidak valid." },
-      { status: 401 },
-    );
-  }
-
-  // Hanya izinkan katalog dan detail produk dengan ID numerik.
-  if (!/^\/produk(?:\/\d+)?$/.test(path)) {
-    return NextResponse.json(
-      { revalidated: false, message: "Path tidak diizinkan." },
-      { status: 400 },
-    );
-  }
-
-  revalidatePath(path);
-
-  return NextResponse.json({
-    revalidated: true,
-    path,
-    message: "Path ditandai untuk dibuat ulang saat diminta berikutnya.",
-  });
+  return NextResponse.json({ message: "Belum diimplementasikan" });
 }
