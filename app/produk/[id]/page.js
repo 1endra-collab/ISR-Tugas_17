@@ -1,55 +1,20 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import BuildInfo from "@/components/BuildInfo";
-import { getProductById } from "@/lib/products";
+// TODO (Langkah 24): import + revalidate, lihat JOBSHEET.md
 
-// TODO (Tahap 5, Langkah 24–25): tambahkan revalidate dan generateStaticParams.
+// TODO (Langkah 25): tulis generateStaticParams, lihat JOBSHEET.md
 
 export default async function DetailProduk({ params }) {
   const { id } = await params;
-  const product = getProductById(id);
-
-  if (!product) notFound();
+  const p = await getProductById(id);
+  if (!p) notFound();
 
   return (
-    <main className="container product-page">
-      <p className="eyebrow">KATALOG / DETAIL PRODUK</p>
-      <header className="page-heading">
-        <h1>{product.nama}</h1>
-        <p>Halaman detail ini dibuat secara statis dan dapat direvalidasi.</p>
-      </header>
-
-      <BuildInfo label="Detail produk terakhir dibuat pada" />
-
-      <article className="card product-detail">
-        <dl className="detail-list">
-          <div>
-            <dt>ID Produk</dt>
-            <dd>{String(product.id).padStart(4, "0")}</dd>
-          </div>
-          <div>
-            <dt>Harga</dt>
-            <dd>
-              {product.harga.toLocaleString("id-ID", {
-                style: "currency",
-                currency: "IDR",
-                maximumFractionDigits: 0,
-              })}
-            </dd>
-          </div>
-          <div>
-            <dt>Stok</dt>
-            <dd>{product.stok} unit</dd>
-          </div>
-          <div>
-            <dt>Status</dt>
-            <dd>{product.stok > 0 ? "Tersedia" : "Habis"}</dd>
-          </div>
-        </dl>
-        <Link className="product-link" href="/produk">
-          ← Kembali ke daftar produk
-        </Link>
-      </article>
+    <main>
+      <h1>{p.nama}</h1>
+      <BuildInfo label="Halaman detail dirender pukul" />
+      <p>Harga: Rp {p.harga.toLocaleString("id-ID")}</p>
+      <p>Stok: {p.stok}</p>
     </main>
   );
 }
