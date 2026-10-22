@@ -2,6 +2,8 @@ import Link from "next/link";
 import BuildInfo from "@/components/BuildInfo";
 import { getProducts } from "@/lib/products";
 
+// TODO (Tahap 3, Langkah 13): tambahkan export const revalidate = ... di sini.
+
 export default function ProdukPage() {
   const products = getProducts();
 
