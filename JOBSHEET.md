@@ -98,7 +98,7 @@ git --version
 
 🖥️
 ```bash
-git clone <URL-REPO-KELOMPOK-4>
+git clone https://github.com/syauqiazka/ISR
 cd isr-jobsheet
 ```
 
