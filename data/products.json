@@ -1,6 +1,9 @@
 [
   { "id": 1, "nama": "Keyboard Mekanik", "harga": 450000, "stok": 12 },
-  { "id": 2, "nama": "Mouse Wireless", "harga": 175000, "stok": 30 },
+  { "id": 2, "nama": "Mouse Wireless", "harga": 199000, "stok": 30 },
   { "id": 3, "nama": "Headset Gaming", "harga": 320000, "stok": 8 },
-  { "id": 4, "nama": "Webcam Full HD", "harga": 280000, "stok": 5 }
+  { "id": 4, "nama": "Webcam Full HD", "harga": 280000, "stok": 0 },
+  { "id": 5, "nama": "Monitor 24 inch", "harga": 1500000, "stok": 3 },
+  { "id": 6, "nama": "Speaker Bluetooth", "harga": 250000, "stok": 6 },
+  { "id": 9, "nama": "Produk Uji", "harga": 100000, "stok": 1 }
 ]

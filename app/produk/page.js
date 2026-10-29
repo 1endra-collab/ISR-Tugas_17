@@ -2,7 +2,13 @@ import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import BuildInfo from "@/components/BuildInfo";
 
-// TODO (Tahap 3, Langkah 13): tulis export const revalidate = ... di sini (lihat JOBSHEET.md)
+export const revalidate = 10;
+
+function labelStok(stok) {
+  if (stok === 0) return "Habis";
+  if (stok < 10) return "Menipis";
+  return "Tersedia";
+}
 
 export default async function ProdukPage() {
   const products = await getProducts();
@@ -16,7 +22,7 @@ export default async function ProdukPage() {
           <li key={p.id} className="card">
             <Link href={`/produk/${p.id}`}>{p.nama}</Link>
             <span>Rp {p.harga.toLocaleString("id-ID")}</span>
-            <small>Stok: {p.stok}</small>
+            <small>Stok: {p.stok} ({labelStok(p.stok)})</small>
           </li>
         ))}
       </ul>
